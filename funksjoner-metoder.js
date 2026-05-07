@@ -23,8 +23,8 @@ funksjonen)
 
 // Skriv koden for oppgave 1 her
 function oddetallPartall(tall) {
-    const rest = tall % 2;
-    return rest === 0 ? "Partall" : "Oddetall";
+    const rest = tall % 2; // Rest brukes til å vurdere om tallet er partall. Resten blir 0 når partall deles med 2.
+    return rest === 0 ? "Partall" : "Oddetall"; // Dersom resten ble 0 returneres "Partall", ellers returneres "Oddetall"
 }
 
 console.log(oddetallPartall(10)); // "Partall"
@@ -47,7 +47,7 @@ Eksempel: "Dette er kult" skal returnere "DETTE ER KULT!"
 
 // Skriv koden for oppgave 2 her
 function storeBokstaver(tekst) {
-    return tekst.toUpperCase();
+    return tekst.toUpperCase(); // Streng-metoden endrer variabelen før den returneres
 }
 
 storeBokstaver("Dette er kult"); // "DETTE ER KULT!";
@@ -78,7 +78,7 @@ Hvis ingen timeverdi mottas, skal funksjonen returnere en feilmelding.
 function hilse(navn, time) {
     /*
         vi kan bruke en switch case med "uttrykk" (expressions)
-        istedet for tekstsammenlikning, og dra nytte av at cases faller igjennom:
+        istedet for tekstsammenlikning, og dra nytte av at cases faller igjennom for å håndtere under 0 og over 23:
     */
     let hilsetekst;
     switch (true) {
@@ -125,6 +125,8 @@ Eksempel 2: ["En", "To", "Tre", "Fire", "Fem", "Seks"] skal returnere
 // Skriv koden for oppgave 4 her
 function amputer(array) {
     return array.slice(1, -1);
+    // Returnerer en "ny" liste bestående av allt ekskludert det første og
+    // siste elementet, logisk ekvivalent med å fjerne det første og siste elementet.
 }
 
 console.log(amputer(["Rød", "Grønn", "Blå", "Gul"])); // ["Grønn", "Blå"]
@@ -150,6 +152,9 @@ Eksempel 3: "   vanskelig        " skal returnere "gøy".
 ******************************************************************************/
 
 // Skriv koden for oppgave 5 her
+
+// En enkelt-linje pil-funksjon (pardon my norsk) kan gis en implisitt returverdi.
+// Prettier pluginen til VSCode legger til parentes rundt parameternavnet men det behøves ikke.
 const merPositiv = (tekst) => tekst.replace("vanskelig", "gøy").trim();
 
 console.log(merPositiv("  Javascript er vanskelig   ")); // "Javascript er gøy"
@@ -180,11 +185,11 @@ Ekstra utfordring: Lag et nytt array som kun inkluderer elementer som inneholder
 ******************************************************************************/
 
 // Skriv koden for oppgave 6 her
-items.shift();
+items.shift(); // Fjerner første element ("shift"er det mot venstre).
 
-items[items.indexOf("Viskelær")] = "Linjal";
+items[items.indexOf("Viskelær")] = "Linjal"; // Finner først hvilken index Viskeler har, og erstatter elementet på den indeksen med Linjal
 
-items.splice(0, 2, "Markeringspenn"); // Første element er fjernet tidligere, derav 0,2.
+items.splice(0, 2, "Markeringspenn"); // Første element er fjernet tidligere, derfor kutter vi fra 0 til 2, ikke 1 til 3.
 
 const nyListe = items.join(" | ");
 console.log(nyListe); // "Markeringspenn | Linjal | Blyant | Markør"
