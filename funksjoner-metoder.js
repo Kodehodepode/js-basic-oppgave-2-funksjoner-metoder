@@ -181,10 +181,16 @@ Ekstra utfordring: Lag et nytt array som kun inkluderer elementer som inneholder
 
 // Skriv koden for oppgave 6 her
 items.shift();
+
 items[items.indexOf("Viskelær")] = "Linjal";
+
 items.splice(0, 2, "Markeringspenn"); // Første element er fjernet tidligere, derav 0,2.
+
 const nyListe = items.join(" | ");
 console.log(nyListe); // "Markeringspenn | Linjal | Blyant | Markør"
+
+const medBokstavenE = items.filter((element) => element.includes("e"));
+console.log(medBokstavenE); // ["Markeringspenn"] fordi så mange elementer er borte innen nå.
 
 /******************************************************************************
 7.
@@ -211,6 +217,20 @@ Eksempel 4: (["En", "To", "Tre"], "To") --> ["En", "Tre"]
 ******************************************************************************/
 
 // Skriv koden for oppgave 7 her
+function listeXor(liste, streng) {
+    if (liste.includes(streng)) {
+        // Fjern elementet hvis det er der
+        liste.splice(liste.indexOf(streng), 1);
+    } else {
+        // Legg til elementet hvis det ikke er der
+        liste.push(streng);
+    }
+
+    return liste;
+}
+
+listeXor(["Rød", "Grønn"], "Blå"); // ["Rød", "Grønn", "Blå"]
+listeXor(["Rød", "Grønn", "Blå"], "Blå"); // ["Rød", "Grønn"]
 
 /******************************************************************************
 8.
@@ -239,3 +259,25 @@ Returner "😎Kun primitive verdier😎".
 ******************************************************************************/
 
 // Skriv koden for oppgave 8 her
+function ordentligKuleTyper(innverdi) {
+    switch (typeof innverdi) {
+        case "string":
+            break;
+        case "number":
+            innverdi *= 2;
+            break;
+        case "boolean":
+            innverdi = innverdi ? "Ja" : "Nei";
+            break;
+        default:
+            innverdi = "Kun primitive verdier";
+    }
+
+    return `😎${innverdi}😎`;
+}
+
+ordentligKuleTyper("Halla kompis!"); // "😎Halla kompis!😎"
+ordentligKuleTyper(42); // "😎84😎"
+ordentligKuleTyper(true); // "😎Ja😎"
+ordentligKuleTyper(false); // "😎Nei😎"
+ordentligKuleTyper([]); // "😎Kun primitive verdier😎"
